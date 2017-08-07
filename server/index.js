@@ -25,29 +25,22 @@ app.get('/events', (req, res) => {
 });
 
 app.post('/events', (req, res) => {
-	items.selectAll({location: req.body.query}, (resultsFromDB) => {
-    if (!resultsFromDB) {
-		  getData.getEventData(req.body.query, results => {
-		  	results.events.forEach(result => {
-			    var eventData = {
-			    	location: req.body.query,
-					  url: result.vanity_url,
-					  name: result.name.text,
-					  date: result.start.utc,
-					  subcategory: result.subcategory_id
-			    }
-			    items.save(eventData)
-			    	// , () => {
-			    	// items.save({location: req.body.query}, (results) => {
-			    	// 	res.send(JSON.stringify(results));
-			    	// })
-			    //})
-		    })
-		  })
-    } else {
-    	res.send(resultsFromDB);
-    }
-	})
+  getData.getEventData(req.body.query, results => {
+  	results.events.forEach(result => {
+	    var eventData = {
+	    	location: req.body.query,
+			  url: result.vanity_url,
+			  name: result.name.text,
+			  date: result.start.utc,
+			  subcategory: result.subcategory_id
+	    }
+	    items.save(eventData, () => {
+	    	items.save({location: req.body.query}, (results) => {
+	    		res.send(JSON.stringify(results));
+	    	})
+	    })
+    })
+  })
 })
 
 app.listen(3000, function() {

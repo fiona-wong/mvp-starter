@@ -22,4 +22,5 @@ let getEventData = (location, callback) => {
   })
 }
 
+
 module.exports.getEventData = getEventData;
