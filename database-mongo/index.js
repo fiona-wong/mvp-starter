@@ -31,6 +31,8 @@ module.exports.selectAll = function(params, callback) {
   });
 };
 
+
+
 module.exports.save = function(model, callback) {
   let event = new Event(model);
   Event.find(model)
@@ -45,15 +47,4 @@ module.exports.save = function(model, callback) {
     }
   })
 }
-// const save = (model) => {
-//   var event = new Event(model);
-//   Event.find(model, (err, events) => {
-//     if (err) {
-//       event.save();
-//     } else {
-//       callback(events)
-//     }
-//   })
-// }
 
-//module.exports.selectAll = selectAll;

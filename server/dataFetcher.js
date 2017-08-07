@@ -1,6 +1,7 @@
 const request = require('request');
 const token = require('../config.js');
-const qs = require('querystring')
+const qs = require('querystring');
+
 
 let getEventData = (location, callback) => {
   let options = {
@@ -16,9 +17,7 @@ let getEventData = (location, callback) => {
     }
   }
   request(options, (err, response, body) => {
-  	//console.log('startofbodyhere', body);
     callback(JSON.parse(body));
-
   })
 }
 

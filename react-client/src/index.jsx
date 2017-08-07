@@ -4,6 +4,9 @@ import $ from 'jquery';
 import List from './components/List.jsx';
 import Search from './components/Search.jsx';
 import TOKEN from '../../config.js';
+import ErrorPage from './components/Error.jsx';
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -17,12 +20,9 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    //event.preventDefault();
     this.setState({
      location: event.target.value
     })
-
-    console.log('changed', event.target.value);
   }
 
   handleSubmit() {
@@ -31,49 +31,24 @@ class App extends React.Component {
       method: 'POST',
       data: {query: this.state.location},
       success: data => {
-        console.log(data);
-        this.setState({
-          events: JSON.parse(data)
-        })
-        console.log(this.state.events)
+        data = JSON.parse(data)
+        console.log(Array.isArray(data));
+        if (Array.isArray(data)) {
+          this.setState({
+            events: data,
+            location: ''
+          })
+        } else {
+          this.setState({
+            location: 'Please try again.'
+          })
+        }
       },
       error: err => {
         console.log('could not connect');
       }
     })
-    
-    console.log('submitted', this.state.location)
   }
-
-
-
-  // componentDidMount() {
-  //   // $.ajax({
-  //   //   url: '/events',
-  //   //   success: (data) => {
-  //   //     this.setState({
-  //   //       items: data
-  //   //     })
-  //   //   },
-  //   //   error: (err) => {
-  //   //     console.log('err', err);
-  //   //   }
-  //   // });
-  // $.ajax({
-  //   url: `https://www.eventbriteapi.com/v3/events/search/`,
-  //   method: 'GET',
-  //   contentType: 'json',
-  //   data: {
-  //     sort_by: 'best',
-  //     subcategories: '3008,3006,3014,3018',
-  //     q: "San Diego"
-  //   },
-  //   success: response => {
-  //     console.log(response);
-  //   }
-  // })
-
-  // }
 
   render () {
     return (<div>

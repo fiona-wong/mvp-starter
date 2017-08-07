@@ -1,0 +1,37 @@
+body {
+  background-color: #D5D5D5;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #565656;
+}
+
+li:hover {
+	color: #7965A1;
+}
+
+a:link {
+  color: #565656;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: #6583A1;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: #7965A1;
+  text-decoration: italic;
+  font-style: italic;
+}
+
+/* selected link */
+a:active {
+  color: #565656;
+  text-decoration: none;
+}
+
+input {
+	background-color: #F4F4F4;
+}
