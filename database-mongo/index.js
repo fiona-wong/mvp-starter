@@ -34,7 +34,7 @@ module.exports.selectAll = function(params, callback) {
 
 
 module.exports.save = function(model, callback) {
-  let event = new Event(model);
+  var event = new Event(model);
   Event.find(model)
   .limit(10)
   .sort({date: 1})

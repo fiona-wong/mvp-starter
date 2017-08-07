@@ -25,6 +25,23 @@ class App extends React.Component {
     })
   }
 
+  componentDidMount() {
+    $.ajax({
+      url: '/events',
+      method: 'GET',
+      success: data => {
+        console.log(data)
+        this.setState({
+          events: JSON.parse(data),
+          location: ''
+        })
+      },
+      error: err => {
+        console.log('could not connect');
+      }
+    })
+  }
+
   handleSubmit() {
     $.ajax({
       url: '/events',

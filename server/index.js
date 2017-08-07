@@ -15,16 +15,17 @@ app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.urlencoded());
 
 app.get('/events', (req, res) => {
-	items.selectAll({location: 'San Francisco'}, results => {
+	items.selectAll({location: /San/}, (err, results) => {
 		res.send(JSON.stringify(results));
 	});
+
 });
 
 app.post('/events', (req, res) => {
 
-  items.selectAll({location: req.body.query}, results => {
+  items.selectAll({location: req.body.query}, (err, results) => {
   	if (results) {
-  		res.send(results)
+  		res.send(JSON.stringify(results))
   	} else {
 		  getData.getEventData(req.body.query, (results)=> {
 		  	results.events.forEach(result => {
@@ -33,8 +34,7 @@ app.post('/events', (req, res) => {
 					  url: result.vanity_url,
 					  name: result.name.text,
 					  date: result.start.utc,
-					  subcategory: result.subcategory_id,
-					  logo: result.logo.url
+					  subcategory: result.subcategory_id
 			    }
 			    items.save(eventData)
 			  })
