@@ -11,15 +11,18 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var eventsSchema = mongoose.Schema({
+  location: String,
+  url: {type: String, unique: true, dropDups: true},
+  name: String,
+  date: Date,
+  subcategory: Number
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var Event = mongoose.model('Event', eventsSchema);
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+module.exports.selectAll = function(params, callback) {
+  Event.find(params, function(err, items) {
     if(err) {
       callback(err, null);
     } else {
@@ -28,4 +31,29 @@ var selectAll = function(callback) {
   });
 };
 
-module.exports.selectAll = selectAll;
+module.exports.save = function(model, callback) {
+  let event = new Event(model);
+  Event.find(model)
+  .limit(10)
+  .sort({date: 1})
+  .then(results => {
+    if (results.length === 0) {
+      event.save();
+      callback(event);
+    } else {
+      callback(results)
+    }
+  })
+}
+// const save = (model) => {
+//   var event = new Event(model);
+//   Event.find(model, (err, events) => {
+//     if (err) {
+//       event.save();
+//     } else {
+//       callback(events)
+//     }
+//   })
+// }
+
+//module.exports.selectAll = selectAll;

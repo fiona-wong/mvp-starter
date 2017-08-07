@@ -18,27 +18,37 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
+  A fast way to look up events happening in San Francisco.
 
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  The bored person's bible.
 
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  Have you ever been bored and had no plans for the day? Well, you're in luck! Use What's App for events happening in San Francisco. Just search for a category of events and What's App will show you what's up.
 
 ## Problem ##
   > Describe the problem your product solves.
+  Boredom, it's a serious issue.
 
 ## Solution ##
   > Describe how your product elegantly solves the problem.
+  It's an easy way to find something to do for people who have nothing to do.
+
 
 ## Quote from You ##
   > A quote from a spokesperson in your company.
+  "Make life great again."
 
 ## How to Get Started ##
   > Describe how easy it is to get started.
+  "Just go on the app and search for events you would be interested in going to."
 
 ## Customer Quote ##
   > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+   "What's app has changed my life, I haven't been bored since!" - Abhi  
 
 ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next.
+  Try it out for yourself!
