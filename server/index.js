@@ -44,7 +44,8 @@ app.post('/events', (req, res) => {
   })
 })
 
-app.listen(3000, function() {
-  console.log('listening on port 3000!');
-});
+const PORT = process.env.PORT || 8080
 
+app.listen({PORT}, function() {
+  console.log(`listening on port ${PORT}!`);
+});

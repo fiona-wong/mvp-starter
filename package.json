@@ -29,6 +29,7 @@
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
-    "react-image": "^1.0.1"
+    "react-image": "^1.0.1",
+    "request": "^2.81.0"
   }
 }
